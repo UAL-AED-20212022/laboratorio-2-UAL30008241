@@ -17,11 +17,13 @@ def main():
                 lista_ligada.insert_at_end(comandos[1])
                 lista_ligada.traverse_list()
             case "RPDE":
-                lista_ligada.insert_after_item(comandos[1],comandos[2])
+                lista_ligada.insert_after_item(comandos[2],comandos[1])
+                lista_ligada.traverse_list()
             case "RPAE":
-                lista_ligada.insert_before_item(comandos[1],comandos[2])
+                lista_ligada.insert_before_item(comandos[2],comandos[1])
             case "RPII":
-                lista_ligada.insert_at_index(int(comandos[1]), comandos[2])
+                lista_ligada.insert_at_index(int(comandos[2]), comandos[1])
+                lista_ligada.traverse_list()
             case "VNE":
                 print(f"O numero de elementos é {lista_ligada.get_count()}.")
             case "VP":
@@ -36,9 +38,12 @@ def main():
                 print(f"O país {lista_ligada.get_last_node()} foi eliminado.")
                 lista_ligada.delete_at_end()
             case "EP":
-                lista_ligada.delete_element_by_value(comandos[1])
-            case "PL":
-                lista_ligada.traverse_list()
+                if lista_ligada.search_item(comandos[1]) == False:
+                    print(f"O país {comandos[1]} não se encontra na lista.")
+                else:    
+                    lista_ligada.delete_element_by_value(comandos[1])
+                    print(f"O país {comandos[1]} foi eliminado da lista.")
+
             case "":
                 break
             case default:
